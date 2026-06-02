@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus-AI | Secure On-Device Intelligence</title>
+    <style>
+        :root {
+            --primary: #4AF2A1;
+            --secondary: #00E5FF;
+            --background: #0F1013;
+            --surface: #1E222A;
+            --text: #FFFFFF;
+            --text-dim: #94A3B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cyber Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(74, 242, 161, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 242, 161, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 0 20px rgba(74, 242, 161, 0.2);
+            color: var(--primary);
+            font-size: 32px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-playstore {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(74, 242, 161, 0.3);
+        }
+
+        .btn-playstore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 242, 161, 0.5);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--surface);
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--text-dim);
+        }
+
+        /* Model Roadmap */
+        .roadmap {
+            background: rgba(255,255,255,0.02);
+            padding: 40px;
+            border-radius: 24px;
+        }
+
+        .model-list {
+            list-style: none;
+        }
+
+        .model-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 16px;
+            text-transform: uppercase;
+        }
+
+        .status-active { background: rgba(74, 242, 161, 0.2); color: var(--primary); }
+        .status-upcoming { background: rgba(0, 229, 255, 0.2); color: var(--secondary); }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo-icon">⚡</div>
+            <h1>NEXUS-AI</h1>
+            <p class="tagline">Zero Cloud. Zero Data Siphon. Clean decoupled native neural networks executing inside device silicon.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.vmworks.nexusai" class="btn-playstore">
+                Get it on Google Play
+            </a>
+        </header>
+
+        <section id="features">
+            <h2>Why Nexus-AI?</h2>
+            <div class="features">
+                <div class="card">
+                    <h3>100% On-Device</h3>
+                    <p>Every response is calculated locally on your phone's CPU and GPU. Your data never leaves your hands.</p>
+                </div>
+                <div class="card">
+                    <h3>Absolute Privacy</h3>
+                    <p>No account required. No logs stored on servers. Encrypted local history keeps your secrets safe.</p>
+                </div>
+                <div class="card">
+                    <h3>Multi-Modal Hub</h3>
+                    <p>Generate high-quality text, stunning artwork, and dynamic videos from a single secure interface.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="models">
+            <div class="roadmap">
+                <h2>Neural Core Library</h2>
+                <ul class="model-list">
+                    <li class="model-item">
+                        <span class="status-badge status-active">Active</span>
+                        <div>
+                            <strong>Gemma 2B IT (Google)</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Optimized for instructions and daily conversation.</p>
+                        </div>
+                    </li>
+                    <li class="model-item">
+                        <span class="status-badge status-upcoming">Upcoming</span>
+                        <div>
+                            <strong>Llama 3 (Meta)</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Advanced reasoning and high-fidelity text synthesis.</p>
+                        </div>
+                    </li>
+                    <li class="model-item">
+                        <span class="status-badge status-upcoming">Upcoming</span>
+                        <div>
+                            <strong>Phi 3 (Microsoft)</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">High-efficiency performance for mobile environments.</p>
+                        </div>
+                    </li>
+                    <li class="model-item">
+                        <span class="status-badge status-upcoming">Upcoming</span>
+                        <div>
+                            <strong>Mistral 7B</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Unmatched accuracy and speed in a compact footprint.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 VMWorks Studio. All rights reserved.</p>
+            <p style="margin-top: 10px;"><a href="../privacy-policy.html">Privacy Policy</a></p>
+        </footer>
+    </div>
+</body>
+</html>
