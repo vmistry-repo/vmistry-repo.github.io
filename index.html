@@ -3,264 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus-AI | Secure On-Device Intelligence</title>
+    <title>VMWorks Studios | Apps that sharpen minds & empower devices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4AF2A1;
-            --secondary: #00E5FF;
-            --background: #0F1013;
-            --surface: #1E222A;
-            --text: #FFFFFF;
-            --text-dim: #94A3B8;
-        }
+            --bg-dark: #07080C;
+            --surface: #12141B;
+            --border: rgba(255,255,255,0.08);
+            --text-primary: #F1F1F4;
+            --text-secondary: #93909A;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* ── PER-APP BRAND COLORS ──────────────────────────────────────
+               When adding a new app, add its signature color(s) here using
+               the naming pattern --<appkey>-<colorname>. These are then
+               referenced by the per-card theme block further below. */
+            --brand-orange: #FF9100;
+            --arrow-blue: #3B82F6;
+            --arrow-pink: #EC4899;
+            --arrow-green: #10B981;
+            --arrow-gold: #F59E0B;
+            --ipo-blue: #4FACFE;
+            --ipo-green: #10B981;
+            --nexus-green: #4AF2A1;
+            --nexus-cyan: #00E5FF;
+            /* --newapp-color: #XXXXXX;   ← ADD NEW APP COLOR HERE */
         }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
         }
+        h1, h2, h3, .logo-text { font-family: 'Outfit', sans-serif; }
 
-        /* Cyber Grid Background */
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Animated gradient background */
+        .bg-layer {
+            position: fixed; inset: 0; z-index: -2;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,145,0,0.10) 0%, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(79,172,254,0.10) 0%, transparent 40%),
+                radial-gradient(circle at 70% 85%, rgba(74,242,161,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 25% 90%, rgba(236,72,153,0.08) 0%, transparent 40%);
+        }
+        .grid-overlay {
+            position: fixed; inset: 0; z-index: -1; pointer-events: none;
             background-image:
-                linear-gradient(rgba(74, 242, 161, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 242, 161, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 24px 40px; max-width: 1300px; margin: 0 auto;
         }
-
-        header {
-            padding: 60px 0;
-            text-align: center;
+        .brand {
+            display: flex; align-items: center; gap: 12px;
+            font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem;
+            letter-spacing: 1px;
         }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            box-shadow: 0 0 20px rgba(74, 242, 161, 0.2);
-            color: var(--primary);
-            font-size: 32px;
+        .brand-mark {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: conic-gradient(from 0deg, var(--brand-orange), var(--ipo-blue), var(--nexus-green), var(--arrow-pink), var(--brand-orange));
+            box-shadow: 0 8px 24px rgba(255,145,0,0.25);
+            position: relative;
         }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin-bottom: 16px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .brand-mark::after {
+            content: "V"; position: absolute; inset: 4px;
+            background: var(--bg-dark); border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Outfit', sans-serif; font-weight: 900; color: #fff; font-size: 1rem;
         }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto 40px;
+        nav .nav-links a {
+            color: var(--text-secondary); text-decoration: none; margin-left: 28px;
+            font-weight: 600; font-size: 0.95rem; transition: color 0.2s;
         }
+        nav .nav-links a:hover { color: var(--text-primary); }
 
-        .btn-playstore {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary);
-            color: #000;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(74, 242, 161, 0.3);
+        /* Hero */
+        .hero {
+            text-align: center; padding: 80px 24px 60px; max-width: 1100px; margin: 0 auto;
         }
-
-        .btn-playstore:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 242, 161, 0.5);
+        .eyebrow {
+            display: inline-block; padding: 6px 14px; border-radius: 999px;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 28px;
         }
-
-        section {
-            padding: 80px 0;
+        .eyebrow .dot {
+            display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+            background: var(--nexus-green); margin-right: 8px; vertical-align: middle;
+            box-shadow: 0 0 12px var(--nexus-green);
         }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            text-align: center;
-            color: var(--secondary);
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900;
+            letter-spacing: -2px; line-height: 1.05; margin-bottom: 24px;
         }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--brand-orange) 0%, var(--ipo-blue) 50%, var(--nexus-green) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p.lead {
+            font-size: clamp(1rem, 1.6vw, 1.25rem); color: var(--text-secondary);
+            max-width: 640px; margin: 0 auto 36px;
+        }
+        .hero-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 28px; border-radius: 14px; text-decoration: none;
+            background: linear-gradient(135deg, #fff 0%, #d9d9d9 100%); color: #000;
+            font-weight: 700; transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.08);
+        }
+        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(255,255,255,0.15); }
 
-        /* Features Grid */
-        .features {
+        /* Apps grid */
+        .apps-section { max-width: 1300px; margin: 0 auto; padding: 40px 24px 100px; }
+        .section-title {
+            text-align: center; margin-bottom: 50px;
+        }
+        .section-title h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 10px; }
+        .section-title p { color: var(--text-secondary); }
+
+        .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .app-card {
+            position: relative; overflow: hidden;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 28px; padding: 32px; cursor: pointer;
+            transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s, box-shadow 0.35s;
+            text-decoration: none; color: inherit; display: flex; flex-direction: column;
+            min-height: 360px;
+        }
+        .app-card::before {
+            content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s;
+            background: var(--card-glow); pointer-events: none;
+        }
+        .app-card:hover { transform: translateY(-8px); border-color: var(--card-accent); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .app-card:hover::before { opacity: 1; }
+
+        .app-icon {
+            width: 84px; height: 84px; border-radius: 22px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px; position: relative; z-index: 1;
+            background: var(--icon-bg); box-shadow: 0 12px 30px var(--icon-shadow);
+        }
+        .app-card h3 {
+            font-size: 1.6rem; margin-bottom: 6px; position: relative; z-index: 1;
+        }
+        .app-tag {
+            font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--card-accent); font-weight: 700; margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .app-desc {
+            color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 28px;
+            position: relative; z-index: 1; flex-grow: 1;
+        }
+        .app-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--card-accent); font-weight: 700; font-size: 0.95rem;
+            position: relative; z-index: 1; transition: gap 0.25s;
+        }
+        .app-card:hover .app-cta { gap: 14px; }
+        .app-cta svg { transition: transform 0.25s; }
+
+        /* ── PER-CARD THEMES ──────────────────────────────────────────────
+           Each app card has its own theme class (e.g. .card-arrow). To add
+           a new app, copy one of the blocks below, rename it to
+           .card-<appkey>, and update the four CSS variables:
+             --card-accent  : main accent color (text + border on hover)
+             --card-glow    : top-right radial wash inside the card
+             --icon-bg      : background gradient for the .app-icon square
+             --icon-shadow  : drop-shadow color under .app-icon
+           Then reference the class in the HTML grid further down. */
+        .card-arrow {
+            --card-accent: var(--brand-orange);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(255,145,0,0.18), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #131A2D 0%, #1f2a4a 100%);
+            --icon-shadow: rgba(59,130,246,0.25);
+        }
+        .card-ipo {
+            --card-accent: var(--ipo-blue);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(79,172,254,0.18), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #0a1628 0%, #102a44 100%);
+            --icon-shadow: rgba(79,172,254,0.3);
+        }
+        .card-nexus {
+            --card-accent: var(--nexus-green);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(74,242,161,0.18), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #0f1d18 0%, #14352a 100%);
+            --icon-shadow: rgba(74,242,161,0.3);
+        }
+        /* .card-<newapp> { ... }   ← ADD NEW APP CARD THEME HERE */
+
+        .badge-play {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            padding: 5px 10px; border-radius: 999px; font-size: 0.7rem;
+            color: var(--text-secondary); margin-bottom: 16px; align-self: flex-start;
+            position: relative; z-index: 1;
         }
 
-        .card {
-            background-color: var(--surface);
-            padding: 32px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: border-color 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-        }
-
-        .card h3 {
-            margin-bottom: 16px;
-            color: var(--primary);
-        }
-
-        .card p {
-            color: var(--text-dim);
-        }
-
-        /* Model Roadmap */
-        .roadmap {
-            background: rgba(255,255,255,0.02);
-            padding: 40px;
-            border-radius: 24px;
-        }
-
-        .model-list {
-            list-style: none;
-        }
-
-        .model-item {
-            display: flex;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .status-badge {
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-right: 16px;
-            text-transform: uppercase;
-        }
-
-        .status-active { background: rgba(74, 242, 161, 0.2); color: var(--primary); }
-        .status-upcoming { background: rgba(0, 229, 255, 0.2); color: var(--secondary); }
-
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-dim);
-            font-size: 0.9rem;
+            text-align: center; padding: 60px 20px;
+            border-top: 1px solid var(--border);
         }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
+        footer .foot-brand {
+            font-family: 'Outfit', sans-serif; font-weight: 800;
+            font-size: 1.2rem; margin-bottom: 8px;
         }
+        footer .foot-brand .gradient {
+            background: linear-gradient(135deg, var(--brand-orange) 0%, var(--ipo-blue) 50%, var(--nexus-green) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        footer p { color: var(--text-secondary); font-size: 0.9rem; }
+        footer .links { margin-top: 14px; }
+        footer .links a {
+            color: var(--text-secondary); text-decoration: none; margin: 0 10px;
+            font-size: 0.85rem; transition: color 0.2s;
+        }
+        footer .links a:hover { color: var(--text-primary); }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
+            nav .nav-links a { margin-left: 16px; font-size: 0.85rem; }
+            .hero { padding: 50px 20px 40px; }
+            .app-card { min-height: auto; padding: 28px; }
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
+    <div class="bg-layer"></div>
+    <div class="grid-overlay"></div>
 
-    <div class="container">
-        <header>
-            <div class="logo-icon">⚡</div>
-            <h1>NEXUS-AI</h1>
-            <p class="tagline">Zero Cloud. Zero Data Siphon. Clean decoupled native neural networks executing inside device silicon.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.vmworks.nexusai" class="btn-playstore">
-                Get it on Google Play
+    <nav>
+        <div class="brand">
+            <div class="brand-mark"></div>
+            <span>VMWORKS&nbsp;STUDIOS</span>
+        </div>
+        <div class="nav-links">
+            <a href="#apps">Apps</a>
+            <a href="https://play.google.com/store/apps/developer?id=VMWorks" target="_blank" rel="noopener">Play Store</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="eyebrow"><span class="dot"></span>Crafting Android experiences</div>
+        <h1>Apps that <span class="gradient">sharpen minds</span><br>&amp; empower devices.</h1>
+        <p class="lead">VMWorks Studios builds focused, privacy-respecting Android apps — from on-device AI to market intelligence and brain-bending puzzles. Explore the full lineup below.</p>
+        <a href="#apps" class="hero-cta">
+            Explore our apps
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         HOW TO ADD A NEW APP
+         ──────────────────────────────────────────────────────────────────
+         1) Add the new app's brand color in the :root block at the top of
+            <style>  (search for "ADD NEW APP COLOR HERE").
+         2) Add a .card-<appkey> CSS theme block under "PER-CARD THEMES"
+            (search for "ADD NEW APP CARD THEME HERE").
+         3) Copy the app card template below (search for "APP CARD TEMPLATE")
+            and paste a new <a class="app-card card-<appkey>"> ... </a>
+            inside the .app-grid div below. Update href, icon SVG,
+            .app-tag, <h3>, and .app-desc.
+         4) Add a quick link in the <footer> .links section
+            (search for "ADD NEW APP FOOTER LINK HERE").
+         ════════════════════════════════════════════════════════════════════ -->
+    <section class="apps-section" id="apps">
+        <div class="section-title">
+            <h2>Our Apps</h2>
+            <p>Three apps. One mission — pure utility, beautifully built.</p>
+        </div>
+        <div class="app-grid">
+
+            <!-- ── APP CARD: Nexus-AI ─────────────────────────────────────── -->
+            <a href="nexus.html" class="app-card card-nexus">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4AF2A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="rgba(74,242,161,0.15)"/>
+                    </svg>
+                </div>
+                <div class="app-tag">On-Device AI</div>
+                <h3>Nexus-AI</h3>
+                <p class="app-desc">High-speed neural networks running entirely on your device silicon. Zero cloud, zero latency, zero data siphon — chat with Gemma, DeepSeek R1, Phi-4 and more, offline.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
             </a>
-        </header>
 
-        <section id="features">
-            <h2>Why Nexus-AI?</h2>
-            <div class="features">
-                <div class="card">
-                    <h3>100% On-Device</h3>
-                    <p>Every response is calculated locally on your phone's CPU and GPU. Your data never leaves your hands.</p>
+            <!-- ── APP CARD: IPO Alert ────────────────────────────────────── -->
+            <a href="ipoalert.html" class="app-card card-ipo">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4FACFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17l6-6 4 4 8-8" />
+                        <path d="M14 7h7v7" />
+                    </svg>
                 </div>
-                <div class="card">
-                    <h3>Absolute Privacy</h3>
-                    <p>No account required. No logs stored on servers. Encrypted local history keeps your secrets safe.</p>
-                </div>
-                <div class="card">
-                    <h3>Multi-Modal Hub</h3>
-                    <p>Generate high-quality text, stunning artwork, and dynamic videos from a single secure interface.</p>
-                </div>
-            </div>
-        </section>
+                <div class="app-tag">Market Intelligence</div>
+                <h3>IPO Alert</h3>
+                <p class="app-desc">Never miss a market opportunity. Real-time IPO alerts, deep financial breakdowns, and live subscription tracking — all in one focused app.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+            </a>
 
-        <section id="models">
-            <div class="roadmap">
-                <h2>Neural Core Library</h2>
-                <ul class="model-list">
-                    <li class="model-item">
-                        <span class="status-badge status-active">Active</span>
-                        <div>
-                            <strong>Gemma 2B IT (Google)</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-dim);">Optimized for instructions and daily conversation.</p>
-                        </div>
-                    </li>
-                    <li class="model-item">
-                        <span class="status-badge status-upcoming">Upcoming</span>
-                        <div>
-                            <strong>Llama 3 (Meta)</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-dim);">Advanced reasoning and high-fidelity text synthesis.</p>
-                        </div>
-                    </li>
-                    <li class="model-item">
-                        <span class="status-badge status-upcoming">Upcoming</span>
-                        <div>
-                            <strong>Phi 3 (Microsoft)</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-dim);">High-efficiency performance for mobile environments.</p>
-                        </div>
-                    </li>
-                    <li class="model-item">
-                        <span class="status-badge status-upcoming">Upcoming</span>
-                        <div>
-                            <strong>Mistral 7B</strong>
-                            <p style="font-size: 0.85rem; color: var(--text-dim);">Unmatched accuracy and speed in a compact footprint.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
+            <!-- ── APP CARD: Arrow Puzzle ─────────────────────────────────── -->
+            <a href="arrow.html" class="app-card card-arrow">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="56" height="56" viewBox="0 0 100 100">
+                        <path d="M50 40 L50 18 M40 28 L50 18 L60 28" stroke="#3B82F6" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 60 L50 82 M40 72 L50 82 L60 72" stroke="#EC4899" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M40 50 L18 50 M28 40 L18 50 L28 60" stroke="#10B981" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M60 50 L82 50 M72 40 L82 50 L72 60" stroke="#F59E0B" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="app-tag">Puzzle &amp; Logic</div>
+                <h3>Arrow Puzzle: Tap &amp; Clear</h3>
+                <p class="app-desc">Slide. Untangle. Master the grid. A premium spatial logic challenge with daily puzzles, starlight medals, and thousands of hand-crafted levels.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+            </a>
 
-        <footer>
-            <p>&copy; 2024 VMWorks Studio. All rights reserved.</p>
-            <p style="margin-top: 10px;"><a href="../privacy-policy.html">Privacy Policy</a></p>
-        </footer>
-    </div>
+            <!-- ════ APP CARD TEMPLATE ═════════════════════════════════════════
+                 ADD NEW APP CARD HERE. Copy the block below, paste it as
+                 real HTML (outside this comment), and fill in placeholders.
+                 Keep CSS class .card-<appkey> matching the theme block
+                 you added in <style>.
+
+                 <a href="<newapp>.html" class="app-card card-<appkey>">
+                     <span class="badge-play">▶ Google Play</span>
+                     <div class="app-icon">
+                         (replace SVG with the new app's icon)
+                         <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+                              stroke="#XXXXXX" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                             <path d="..." />
+                         </svg>
+                     </div>
+                     <div class="app-tag">CATEGORY LABEL</div>
+                     <h3>App Name</h3>
+                     <p class="app-desc">One- or two-sentence pitch describing the app.</p>
+                     <span class="app-cta">
+                         Visit page
+                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                              stroke="currentColor" stroke-width="2.5"
+                              stroke-linecap="round" stroke-linejoin="round">
+                             <path d="M5 12h14M13 5l7 7-7 7"/>
+                         </svg>
+                     </span>
+                 </a>
+                 ════════════════════════════════════════════════════════════════ -->
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="foot-brand"><span class="gradient">VMWorks Studios</span></div>
+        <p>Building focused Android apps. Made with ❤️ in India.</p>
+        <!-- Footer quick links — keep in sync with the app cards above. -->
+        <div class="links">
+            <a href="nexus.html">Nexus-AI</a> ·
+            <a href="ipoalert.html">IPO Alert</a> ·
+            <a href="arrow.html">Arrow Puzzle</a>
+            <!-- · <a href="<newapp>.html">App Name</a>   ← ADD NEW APP FOOTER LINK HERE -->
+        </div>
+        <p style="margin-top: 18px; font-size: 0.8rem;">&copy; 2026 VMWorks Studios. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Subtle parallax tilt on cards
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `translateY(-8px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
 </body>
 </html>
+
