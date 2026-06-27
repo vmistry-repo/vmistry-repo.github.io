@@ -26,6 +26,7 @@
             --arrow-gold: #F59E0B;
             --ipo-blue: #4FACFE;
             --ipo-green: #10B981;
+            --nasdaq-gold: #D4AF37;
             --nexus-green: #4AF2A1;
             --nexus-cyan: #00E5FF;
             /* --newapp-color: #XXXXXX;   ← ADD NEW APP COLOR HERE */
@@ -205,6 +206,12 @@
             --icon-bg: linear-gradient(135deg, #0f1d18 0%, #14352a 100%);
             --icon-shadow: rgba(74,242,161,0.3);
         }
+        .card-nasdaq {
+            --card-accent: var(--nasdaq-gold);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(212,175,55,0.15), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #1A1C24 0%, #2A2D3A 100%);
+            --icon-shadow: rgba(212,175,55,0.2);
+        }
         /* .card-<newapp> { ... }   ← ADD NEW APP CARD THEME HERE */
 
         .badge-play {
@@ -287,7 +294,7 @@
     <section class="apps-section" id="apps">
         <div class="section-title">
             <h2>Our Apps</h2>
-            <p>Three apps. One mission — pure utility, beautifully built.</p>
+            <p>Four apps. One mission — pure utility, beautifully built.</p>
         </div>
         <div class="app-grid">
 
@@ -346,6 +353,24 @@
                 </span>
             </a>
 
+            <!-- ── APP CARD: NASDAQ IPO Monitor ────────────────────────────── -->
+            <a href="nasdaqipomonitor.html" class="app-card card-nasdaq">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18" />
+                        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                    </svg>
+                </div>
+                <div class="app-tag">Financial Intelligence</div>
+                <h3>NASDAQ IPO Monitor</h3>
+                <p class="app-desc">Real-time intelligence on initial public offerings. Track priced, upcoming, and filed listings with deep financial reports and underwriter data.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+
             <!-- ════ APP CARD TEMPLATE ═════════════════════════════════════════
                  ADD NEW APP CARD HERE. Copy the block below, paste it as
                  real HTML (outside this comment), and fill in placeholders.
@@ -386,8 +411,8 @@
         <div class="links">
             <a href="nexus.html">Nexus-AI</a> ·
             <a href="ipoalert.html">IPO Alert</a> ·
+            <a href="nasdaqipomonitor.html">NASDAQ IPO Monitor</a> ·
             <a href="arrow.html">Arrow Puzzle</a>
-            <!-- · <a href="<newapp>.html">App Name</a>   ← ADD NEW APP FOOTER LINK HERE -->
         </div>
         <p style="margin-top: 18px; font-size: 0.8rem;">&copy; 2026 VMWorks Studios. All rights reserved.</p>
     </footer>

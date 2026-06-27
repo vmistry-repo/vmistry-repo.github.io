@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASDAQ IPO Monitor | VMWorks Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #07080C;
+            --surface: #12141B;
+            --border: rgba(255,255,255,0.08);
+            --text-primary: #F1F1F4;
+            --text-secondary: #93909A;
+            --accent-gold: #D4AF37;
+            --accent-blue: #4FACFE;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+
+        .bg-layer {
+            position: fixed; inset: 0; z-index: -2;
+            background: radial-gradient(circle at 15% 20%, rgba(79,172,254,0.12) 0%, transparent 40%);
+        }
+
+        header {
+            padding: 100px 24px 60px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        .feature-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(79,172,254,0.1) 0%, rgba(212,175,55,0.05) 100%);
+            padding: 80px 24px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+        }
+        .btn {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 16px 40px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.05); }
+
+        footer {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="bg-layer"></div>
+
+    <header>
+        <h1>NASDAQ IPO Monitor</h1>
+        <p>Instant, high-density intelligence on initial public offerings filed or recently listed on the Nasdaq Stock Market.</p>
+    </header>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-card">
+                <h3>📊 Live IPO Calendar</h3>
+                <p>Track every stage of the IPO lifecycle: Priced, Upcoming, Filed, and Withdrawn. Data is synced dynamically from official Nasdaq feeds.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 Deep Financials</h3>
+                <p>Access full company descriptions, quarter-by-quarter balance sheets, income statements, and SEC registration identifiers.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏦 Underwriter Structure</h3>
+                <p>Identify the lead underwriting banks and expert advisors managing the allocation of shares for every listing.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⭐ Custom Watchlist</h3>
+                <p>Save your favorite companies to a personal watchlist for instant offline access and real-time monitoring of pricing adjustments.</p>
+            </div>
+        </div>
+
+        <section class="cta-section">
+            <h2>Master the IPO Market</h2>
+            <p>Download the official dashboard and stay ahead of the next big listing.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.vmworks.nasdaqipomonitor" class="btn">Download for Android</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VMWorks Studios. All rights reserved.</p>
+        <div style="margin-top: 15px;">
+            <a href="index.html">Back to Studios</a> ·
+            <a href="../privacypolicy/index.html">Privacy Policy</a>
+        </div>
+    </footer>
+</body>
+</html>
