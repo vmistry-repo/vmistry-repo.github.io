@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>photoLab | Your Personal Passport Size Photo Guide</title>
+    <meta name="description" content="photoLab — studio-grade passport and ID photos on Android. Official country sizes, live capture coaching, background studio and print-ready output, entirely on your device.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7CE8D4;
+            --accent: #006B5D;
+            --bg: #07111F;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #F0F4FA;
+            --text-muted: #BAC6D8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; }
+        .gradient-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(124, 232, 212, 0.14) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 107, 93, 0.18) 0%, transparent 45%);
+            z-index: -1;
+        }
+        nav { padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; }
+        .back-link { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--text); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        header { padding: 5rem 0 4rem; text-align: center; }
+        .app-icon-lg {
+            width: 108px; height: 108px; border-radius: 26px; margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #0C1930 0%, #16283f 100%);
+            border: 1px solid rgba(124, 232, 212, 0.35);
+            box-shadow: 0 18px 44px rgba(124, 232, 212, 0.22);
+            display: flex; align-items: center; justify-content: center;
+        }
+        h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; margin-bottom: 1rem; letter-spacing: -2px; }
+        .tagline { font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 1.2rem; }
+        .hero-text { font-size: 1.1rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 2.6rem; }
+        .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #4ADBBF 100%);
+            color: #00382F; padding: 1rem 2.5rem; border-radius: 50px;
+            text-decoration: none; font-weight: 800; transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block; box-shadow: 0 10px 24px rgba(124, 232, 212, 0.3);
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(124, 232, 212, 0.42); }
+        .package-hint { margin-top: 1.1rem; font-size: 0.8rem; color: var(--text-muted); }
+        .package-hint code { background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 8px; padding: 2px 8px; font-size: 0.78rem; color: var(--primary); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 3rem 0 4rem; }
+        .feature-card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); padding: 2.2rem; border-radius: 24px; transition: border-color 0.3s ease; }
+        .feature-card:hover { border-color: var(--primary); }
+        .feature-card h3 { margin-bottom: 0.8rem; font-size: 1.3rem; color: var(--primary); }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .privacy-note { max-width: 760px; margin: 0 auto; padding: 1.6rem 2rem; border: 1px solid rgba(124, 232, 212, 0.3); border-radius: 20px; background: rgba(124, 232, 212, 0.06); text-align: center; color: var(--text-muted); font-size: 0.95rem; }
+        .privacy-note strong { color: var(--primary); }
+        footer { padding: 3.5rem 0 4rem; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+        footer p { color: var(--text-muted); font-size: 0.9rem; }
+        footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { h1 { font-size: 2.4rem; } header { padding: 3rem 0 2.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <nav>
+        <div class="logo">photoLab</div>
+        <a class="back-link" href="index.html">← All apps</a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="app-icon-lg">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#7CE8D4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/>
+                    <circle cx="9.5" cy="9.5" r="2"/>
+                    <path d="M6 16.5c0.5-2.1 1.8-3 3.5-3s3 0.9 3.5 3"/>
+                    <path d="M14.5 8h4M14.5 11h4M14.5 14h3"/>
+                </svg>
+            </div>
+            <h1>Your personal passport<br>size photo guide</h1>
+            <p class="tagline">Studio-grade photos, without the studio.</p>
+            <p class="hero-text">Create exact-size passport and identity photos with official country guidance, live capture coaching, on-device background studio and print-ready output — all privately, in about a minute.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.vmistry.passportphoto" class="btn">Download on Google Play</a>
+            <div class="package-hint">Package: <code>com.vmistry.passportphoto</code></div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Official country sizes</h3>
+                <p>Precise mm, inch or pixel specs for dozens of countries and document types — kept up to date, with custom sizes supported too.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Live capture coach</h3>
+                <p>Framing, head size and lighting are checked in real time, and the app can even take the photo for you when everything lines up.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Background studio</h3>
+                <p>Lift the subject off the background and swap in perfect white, grey, blue or green — with edge refinement built in.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Know before you print</h3>
+                <p>Every photo is scored against the official rule — head position, background, expression — with fixes for anything that looks off.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Print-ready, anywhere</h3>
+                <p>Export sharp print files and true-size PDF sheets with printer calibration, or share digitally in the exact required size.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Private by design</h3>
+                <p>All data stays on your device. No photo ever leaves it — processing happens entirely on your hardware.</p>
+            </div>
+        </section>
+
+        <div class="privacy-note">
+            <strong>Privacy first:</strong> your photos never leave your device. Read the full
+            <a href="privacy-photolab.html" style="color: var(--primary)">privacy policy</a>.
+        </div>
+
+        <footer>
+            <p>&copy; 2026 photoLab. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html">More apps</a> ·
+                <a href="privacy-photolab.html">Privacy Policy</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

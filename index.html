@@ -29,6 +29,8 @@
             --nasdaq-gold: #D4AF37;
             --nexus-green: #4AF2A1;
             --nexus-cyan: #00E5FF;
+            --photolab-mint: #7CE8D4;
+            --photolab-navy: #0C1930;
             /* --newapp-color: #XXXXXX;   ← ADD NEW APP COLOR HERE */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -212,6 +214,12 @@
             --icon-bg: linear-gradient(135deg, #1A1C24 0%, #2A2D3A 100%);
             --icon-shadow: rgba(212,175,55,0.2);
         }
+        .card-photolab {
+            --card-accent: var(--photolab-mint);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(124,232,212,0.18), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #0C1930 0%, #16283f 100%);
+            --icon-shadow: rgba(124,232,212,0.3);
+        }
         /* .card-<newapp> { ... }   ← ADD NEW APP CARD THEME HERE */
 
         .badge-play {
@@ -294,7 +302,7 @@
     <section class="apps-section" id="apps">
         <div class="section-title">
             <h2>Our Apps</h2>
-            <p>Four apps. One mission — pure utility, beautifully built.</p>
+            <p>Five apps. One mission — pure utility, beautifully built.</p>
         </div>
         <div class="app-grid">
 
@@ -371,6 +379,26 @@
                 </span>
             </a>
 
+            <!-- ── APP CARD: photoLab ───────────────────────────────────────── -->
+            <a href="passport.html" class="app-card card-photolab">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#7CE8D4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/>
+                        <circle cx="9.5" cy="9.5" r="2"/>
+                        <path d="M6 16.5c0.5-2.1 1.8-3 3.5-3s3 0.9 3.5 3"/>
+                        <path d="M14.5 8h4M14.5 11h4M14.5 14h3"/>
+                    </svg>
+                </div>
+                <div class="app-tag">Document Photos</div>
+                <h3>photoLab</h3>
+                <p class="app-desc">Studio-grade passport &amp; ID photos in about a minute. Official country sizes, live capture coaching, background studio and print-ready output — entirely on your device.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+
             <!-- ════ APP CARD TEMPLATE ═════════════════════════════════════════
                  ADD NEW APP CARD HERE. Copy the block below, paste it as
                  real HTML (outside this comment), and fill in placeholders.
@@ -412,7 +440,8 @@
             <a href="nexus.html">Nexus-AI</a> ·
             <a href="ipoalert.html">IPO Alert</a> ·
             <a href="nasdaqipomonitor.html">NASDAQ IPO Monitor</a> ·
-            <a href="arrow.html">Arrow Puzzle</a>
+            <a href="arrow.html">Arrow Puzzle</a> ·
+            <a href="passport.html">photoLab</a>
         </div>
         <p style="margin-top: 18px; font-size: 0.8rem;">&copy; 2026 VMWorks Studios. All rights reserved.</p>
     </footer>
