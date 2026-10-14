@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071713">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="photoLab - AI Passport Photo Generator creates studio-grade passport and identity photos on Android with country guidance, exact custom sizes, live capture coaching, on-device checks, and print-ready output.">
+  <meta property="og:title" content="photoLab - AI Passport Photo Generator">
+  <meta property="og:description" content="Country-aware sizing, live capture guidance and private on-device photo preparation for Android.">
+  <meta property="og:type" content="website">
+  <title>photoLab - AI Passport Photo Generator for Android</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #06130f;
+      --bg-soft: #0a1c17;
+      --surface: #0f251f;
+      --surface-2: #153229;
+      --line: rgba(188, 234, 220, .16);
+      --text: #f2fbf7;
+      --muted: #a8c2b9;
+      --mint: #75e5ca;
+      --mint-strong: #33cbaa;
+      --gold: #f6c875;
+      --danger: #ffb3ad;
+      --shadow: 0 26px 80px rgba(0, 0, 0, .34);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 74% 8%, rgba(51, 203, 170, .14), transparent 31rem),
+        radial-gradient(circle at 9% 35%, rgba(246, 200, 117, .07), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      transform: translateY(-150%);
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--mint);
+      color: #042018;
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(188, 234, 220, .1);
+      background: rgba(6, 19, 15, .83);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-size: 1.22rem; font-weight: 850; letter-spacing: -.03em; }
+    .brand-mark {
+      position: relative;
+      width: 42px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 13px;
+      background: linear-gradient(145deg, #8af0d8, #26b996);
+      box-shadow: 0 10px 28px rgba(51, 203, 170, .24);
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      left: 14px;
+      top: 8px;
+      border-radius: 50%;
+      background: #073a2f;
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 23px;
+      height: 17px;
+      left: 8.5px;
+      bottom: 6px;
+      border-radius: 50% 50% 34% 34%;
+      background: #073a2f;
+      box-shadow: inset 0 0 0 4px rgba(117, 229, 202, .22);
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .94rem; font-weight: 700; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(117, 229, 202, .08);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr);
+      align-items: center;
+      gap: 68px;
+      min-height: 720px;
+      padding-block: 72px 88px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--mint);
+      font-size: .79rem;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(3.1rem, 6.8vw, 6.45rem);
+      line-height: .96;
+      letter-spacing: -.072em;
+      text-wrap: balance;
+    }
+    .hero h1 span { color: var(--mint); }
+    .lead { max-width: 650px; margin-bottom: 32px; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 21px;
+      border: 1px solid transparent;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .button.primary { background: var(--mint); color: #04271d; box-shadow: 0 16px 35px rgba(51, 203, 170, .19); }
+    .button.secondary { border-color: var(--line); background: rgba(255, 255, 255, .025); color: var(--text); }
+    .button:hover { transform: translateY(-1px); }
+    .microcopy { margin: 16px 0 0; color: #7f9c92; font-size: .84rem; }
+
+    .phone-wrap { position: relative; display: grid; place-items: center; }
+    .phone-wrap::before {
+      content: "";
+      position: absolute;
+      width: 84%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(51, 203, 170, .18);
+      filter: blur(70px);
+    }
+    .phone {
+      position: relative;
+      width: min(100%, 382px);
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 48px;
+      background: #020705;
+      box-shadow: var(--shadow);
+      transform: rotate(2.2deg);
+    }
+    .phone-screen {
+      min-height: 650px;
+      overflow: hidden;
+      border-radius: 37px;
+      background: linear-gradient(180deg, #0f2b23 0%, #081712 100%);
+    }
+    .phone-top { display: flex; justify-content: space-between; padding: 22px 22px 8px; color: #d9ece5; font-size: .73rem; font-weight: 800; }
+    .phone-content { padding: 22px; }
+    .phone-label { margin-bottom: 6px; color: var(--mint); font-size: .68rem; font-weight: 900; letter-spacing: .13em; }
+    .phone-title { margin-bottom: 20px; font-size: 1.75rem; line-height: 1.05; letter-spacing: -.04em; }
+    .photo-stage {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(117, 229, 202, .45);
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, .9) 0 10%, transparent 10.4%),
+        radial-gradient(ellipse at 50% 57%, #d7e5df 0 23%, transparent 23.4%),
+        linear-gradient(145deg, #edf8f3, #bed7cc);
+    }
+    .photo-stage::before {
+      content: "";
+      position: absolute;
+      width: 46%;
+      height: 63%;
+      top: 15%;
+      border: 2px solid rgba(6, 63, 49, .78);
+      border-radius: 50%;
+    }
+    .photo-stage::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border: 2px solid rgba(6, 63, 49, .68);
+      border-radius: 18px;
+    }
+    .coach {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      width: calc(100% - 34px);
+      transform: translateX(-50%);
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, .19);
+      border-radius: 15px;
+      background: rgba(3, 19, 14, .84);
+      backdrop-filter: blur(10px);
+    }
+    .coach-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: .8rem; font-weight: 800; }
+    .coach-row b { color: var(--mint); }
+    .progress { height: 5px; margin-top: 8px; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, .13); }
+    .progress span { display: block; width: 92%; height: 100%; border-radius: inherit; background: var(--mint); }
+    .phone-chips { display: flex; gap: 8px; margin-top: 16px; }
+    .phone-chips span { flex: 1; padding: 10px 7px; border: 1px solid var(--line); border-radius: 12px; color: var(--muted); font-size: .7rem; text-align: center; }
+    .phone-chips span:first-child { border-color: rgba(117, 229, 202, .45); background: rgba(117, 229, 202, .11); color: var(--mint); }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-block: 1px solid var(--line);
+    }
+    .trust-item { padding: 27px 20px; text-align: center; }
+    .trust-item + .trust-item { border-left: 1px solid var(--line); }
+    .trust-item strong { display: block; margin-bottom: 2px; color: var(--mint); font-size: 1.4rem; }
+    .trust-item span { color: var(--muted); font-size: .88rem; }
+
+    section { padding-block: 108px; }
+    .section-head { display: grid; grid-template-columns: .8fr 1.2fr; align-items: end; gap: 50px; margin-bottom: 44px; }
+    h2 { margin-bottom: 0; font-size: clamp(2.25rem, 4.7vw, 4.3rem); line-height: 1.03; letter-spacing: -.055em; text-wrap: balance; }
+    .section-head p { max-width: 620px; margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .feature {
+      position: relative;
+      min-height: 250px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(21, 50, 41, .88), rgba(10, 28, 23, .9));
+    }
+    .feature:nth-child(1), .feature:nth-child(4) { grid-column: span 7; }
+    .feature:nth-child(2), .feature:nth-child(3) { grid-column: span 5; }
+    .feature::after { content: ""; position: absolute; right: -60px; bottom: -90px; width: 180px; height: 180px; border: 1px solid rgba(117, 229, 202, .17); border-radius: 50%; }
+    .feature-icon { display: grid; width: 48px; aspect-ratio: 1; place-items: center; margin-bottom: 45px; border-radius: 14px; background: rgba(117, 229, 202, .12); color: var(--mint); font-size: 1.25rem; font-weight: 900; }
+    .feature h3 { margin-bottom: 8px; font-size: 1.38rem; letter-spacing: -.025em; }
+    .feature p { max-width: 590px; margin-bottom: 0; color: var(--muted); }
+
+    .workflow { background: linear-gradient(180deg, transparent, rgba(12, 35, 28, .58), transparent); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: step; }
+    .step { counter-increment: step; padding: 25px; border-top: 1px solid rgba(117, 229, 202, .55); background: rgba(255, 255, 255, .018); }
+    .step::before { content: "0" counter(step); display: block; margin-bottom: 64px; color: var(--mint); font-size: .78rem; font-weight: 900; letter-spacing: .15em; }
+    .step h3 { margin-bottom: 8px; font-size: 1.12rem; }
+    .step p { margin-bottom: 0; color: var(--muted); font-size: .91rem; }
+
+    .privacy-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+      padding: clamp(30px, 6vw, 64px);
+      border: 1px solid rgba(117, 229, 202, .25);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(21, 57, 46, .92), rgba(8, 25, 20, .96));
+      box-shadow: var(--shadow);
+    }
+    .privacy-card h2 { margin-bottom: 18px; }
+    .privacy-card p { color: var(--muted); }
+    .privacy-list { display: grid; gap: 12px; align-content: center; }
+    .privacy-list div { display: flex; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(2, 12, 9, .3); }
+    .check { color: var(--mint); font-weight: 950; }
+
+    .faq { display: grid; grid-template-columns: .65fr 1.35fr; gap: 80px; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { padding: 21px 0; border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--mint); font-size: 1.25rem; }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 720px; margin: 13px 0 0; color: var(--muted); }
+
+    .launch {
+      padding: 68px 40px;
+      border-block: 1px solid var(--line);
+      text-align: center;
+    }
+    .launch h2 { max-width: 780px; margin-inline: auto; }
+    .launch p { max-width: 650px; margin: 18px auto 26px; color: var(--muted); }
+
+    footer { padding-block: 38px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--muted); font-size: .86rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-underline-offset: 4px; }
+
+    :focus-visible { outline: 3px solid rgba(117, 229, 202, .7); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; min-height: auto; padding-top: 62px; }
+      .hero-copy { text-align: center; }
+      .lead { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .phone { transform: none; }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .trust-item:nth-child(4) { border-top: 1px solid var(--line); }
+      .section-head, .privacy-card, .faq { grid-template-columns: 1fr; gap: 25px; }
+      .feature:nth-child(n) { grid-column: span 6; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .faq { gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .nav-inner { min-height: 66px; }
+      .nav-links a:not(.pill-link) { display: none; }
+      .pill-link { min-height: 40px; padding-inline: 13px; font-size: .82rem !important; }
+      .hero { padding-block: 48px 68px; }
+      h1 { font-size: clamp(2.75rem, 14.2vw, 4rem); }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+      .phone { max-width: 342px; }
+      .phone-screen { min-height: 585px; }
+      section { padding-block: 78px; }
+      .section-head { margin-bottom: 30px; }
+      .feature:nth-child(n), .steps { grid-column: 1; }
+      .feature-grid, .steps { grid-template-columns: 1fr; }
+      .feature { min-height: 220px; }
+      .feature-icon { margin-bottom: 34px; }
+      .step::before { margin-bottom: 32px; }
+      .trust-item { padding-inline: 8px; }
+      .privacy-card { padding: 28px 21px; }
+      .launch { padding-inline: 20px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="photoLab home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>photoLab</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#workflow">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a class="pill-link" href="#launch">Android app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="shell hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow">Private by design · Android</div>
+        <h1>Passport photos, <span>precisely prepared.</span></h1>
+        <p class="lead">Create country-aware passport and identity photos with live capture guidance, exact custom sizes, on-device checks, careful editing and print-ready output.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#features">Explore photoLab <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href="privacy.html">Read privacy policy</a>
+        </div>
+        <p class="microcopy">No account · No watermark · Photos processed on your device</p>
+      </div>
+
+      <div class="phone-wrap" aria-label="Stylized preview of the photoLab live capture coach">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
+            <div class="phone-content">
+              <div class="phone-label">STEP 2 OF 4</div>
+              <div class="phone-title">Live photo coach</div>
+              <div class="photo-stage">
+                <div class="coach">
+                  <div class="coach-row"><span>Ready — hold still</span><b>92%</b></div>
+                  <div class="progress"><span></span></div>
+                </div>
+              </div>
+              <div class="phone-chips"><span>Framing</span><span>Pose</span><span>Lighting</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell trust-strip" aria-label="Product highlights">
+      <div class="trust-item"><strong>254</strong><span>countries &amp; territories</span></div>
+      <div class="trust-item"><strong>2–8</strong><span>photos compared</span></div>
+      <div class="trust-item"><strong>600</strong><span>DPI print output</span></div>
+      <div class="trust-item"><strong>0</strong><span>photo uploads</span></div>
+    </div>
+
+    <section class="shell" id="features">
+      <div class="section-head">
+        <h2>Everything between capture and confidence.</h2>
+        <p>photoLab combines precise output controls with approachable guidance. Choose a country and document, or enter any width, height, DPI and pixel format supplied by an authority.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">⌖</div>
+          <h3>Live capture coach</h3>
+          <p>The visible oval is the actual capture target. Face position, distance, pose, eyes, expression and lighting must align before automatic capture. Manual capture remains available.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">◎</div>
+          <h3>Country + document profiles</h3>
+          <p>Use authority-specific profiles when verified. Where a single standard does not exist, photoLab clearly requests the exact dimensions from your issuing office instead of guessing.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">◇</div>
+          <h3>Private projects</h3>
+          <p>Untouched originals, checkpoints and project metadata are encrypted with an Android Keystore-backed key. Add an optional biometric or device-credential app lock.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">↺</div>
+          <h3>Precise, reversible editing</h3>
+          <p>Pan, zoom, rotate, refine background edges and undo changes without losing the original. Compare up to eight candidates before choosing the strongest photo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow">
+      <div class="shell">
+        <div class="section-head">
+          <h2>A focused four-step workflow.</h2>
+          <p>Complex requirements stay behind a clear path from official size selection to final digital or print output.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Choose</h3><p>Select the destination country, application document and applicant mode.</p></article>
+          <article class="step"><h3>Capture</h3><p>Use live guidance or import and compare as many as eight candidate photos.</p></article>
+          <article class="step"><h3>Refine</h3><p>Frame the portrait, review checks and make reversible corrections.</p></article>
+          <article class="step"><h3>Export</h3><p>Create exact pixels, a custom file-size target or a true-size printable sheet.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="privacy">
+      <div class="privacy-card">
+        <div>
+          <div class="eyebrow">Privacy first</div>
+          <h2>Your portrait is not our product.</h2>
+          <p>Photo analysis, cropping, background processing and export happen locally. The app does not upload your photo pixels to photoLab or Google Mobile Ads.</p>
+          <a class="button primary" href="privacy.html">Full privacy policy <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="privacy-list" aria-label="Privacy highlights">
+          <div><span class="check" aria-hidden="true">✓</span><span>No account or cloud photo library</span></div>
+          <div><span class="check" aria-hidden="true">✓</span><span>Encrypted private projects and originals</span></div>
+          <div><span class="check" aria-hidden="true">✓</span><span>System photo picker with selected-item access</span></div>
+          <div><span class="check" aria-hidden="true">✓</span><span>Delete-all-private-data control</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell faq" id="faq">
+      <div>
+        <div class="eyebrow">Good to know</div>
+        <h2>Clear answers before you apply.</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Does photoLab guarantee acceptance?</summary>
+          <p>No. photoLab is an independent preparation tool, not a government authority. Automated checks and profiles reduce common errors, but the issuing authority always makes the final decision.</p>
+        </details>
+        <details>
+          <summary>Can I enter my own required size?</summary>
+          <p>Yes. Enter dimensions in millimetres, centimetres, inches or pixels, then choose DPI, output format, background colour, copy count and an optional JPEG file-size target.</p>
+        </details>
+        <details>
+          <summary>What if the authority requires an approved photographer?</summary>
+          <p>photoLab completes the output first, then displays the applicable provider, secure-transfer, on-site-capture or confirmation notice. The app never presents its output as official certification.</p>
+        </details>
+        <details>
+          <summary>Does the app contain advertising?</summary>
+          <p>Yes. The free app includes Google Mobile Ads with consent controls. Banners and native ads can appear within the interface, with app-open and standard interstitial ads at suitable transitions.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="launch" id="launch">
+      <div class="shell">
+        <div class="eyebrow">Built for Android</div>
+        <h2>Prepare the photo. Keep control of the original.</h2>
+        <p>photoLab supports Android 7.1 and newer. The public Google Play listing link can be added here after release.</p>
+        <a class="button secondary" href="privacy.html">Review privacy before installation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div>© 2026 photoLab. Independent document-photo preparation.</div>
+      <div class="footer-links">
+        <a href="https://vmistry-repo.github.io/" rel="noopener">More apps</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="#faq">FAQ</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
