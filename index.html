@@ -31,6 +31,8 @@
             --nexus-cyan: #00E5FF;
             --photolab-mint: #7CE8D4;
             --photolab-navy: #0C1930;
+            --smartmoney-mint: #52DAB4;
+            --smartmoney-gold: #E7C36A;
             /* --newapp-color: #XXXXXX;   ← ADD NEW APP COLOR HERE */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -220,6 +222,12 @@
             --icon-bg: linear-gradient(135deg, #0C1930 0%, #16283f 100%);
             --icon-shadow: rgba(124,232,212,0.3);
         }
+        .card-smartmoney {
+            --card-accent: var(--smartmoney-mint);
+            --card-glow: radial-gradient(circle at 100% 0%, rgba(82,218,180,0.18), transparent 50%);
+            --icon-bg: linear-gradient(135deg, #0e1c29 0%, #16403a 100%);
+            --icon-shadow: rgba(82,218,180,0.3);
+        }
         /* .card-<newapp> { ... }   ← ADD NEW APP CARD THEME HERE */
 
         .badge-play {
@@ -302,7 +310,7 @@
     <section class="apps-section" id="apps">
         <div class="section-title">
             <h2>Our Apps</h2>
-            <p>Five apps. One mission — pure utility, beautifully built.</p>
+            <p>Six apps. One mission — pure utility, beautifully built.</p>
         </div>
         <div class="app-grid">
 
@@ -399,6 +407,25 @@
                 </span>
             </a>
 
+            <!-- ── APP CARD: Smart Money ───────────────────────────────────── -->
+            <a href="smartmoney.html" class="app-card card-smartmoney">
+                <span class="badge-play">▶ Google Play</span>
+                <div class="app-icon">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#52DAB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17l6-6 4 4 8-8" />
+                        <path d="M14 7h7v7" />
+                        <path d="M4 21h16" stroke="#E7C36A" />
+                    </svg>
+                </div>
+                <div class="app-tag">SEC Filings · Insider Trades</div>
+                <h3>Smart Money: Insider Tracker</h3>
+                <p class="app-desc">Follow the smart money, straight from SEC EDGAR. Insider Form 4 trades, 13F whale portfolios and 8-K events decoded into plain language — with watchlist alerts, no ads and no account.</p>
+                <span class="app-cta">
+                    Visit page
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+
             <!-- ════ APP CARD TEMPLATE ═════════════════════════════════════════
                  ADD NEW APP CARD HERE. Copy the block below, paste it as
                  real HTML (outside this comment), and fill in placeholders.
@@ -441,7 +468,8 @@
             <a href="ipoalert.html">IPO Alert</a> ·
             <a href="nasdaqipomonitor.html">NASDAQ IPO Monitor</a> ·
             <a href="arrow.html">Arrow Puzzle</a> ·
-            <a href="passport.html">photoLab</a>
+            <a href="passport.html">photoLab</a> ·
+            <a href="smartmoney.html">Smart Money</a>
         </div>
         <p style="margin-top: 18px; font-size: 0.8rem;">&copy; 2026 VMWorks Studios. All rights reserved.</p>
     </footer>
