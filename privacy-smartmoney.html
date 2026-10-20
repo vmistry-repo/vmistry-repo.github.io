@@ -102,10 +102,10 @@
     <div class="summary" aria-label="Privacy summary">
       <article><b>No account</b><span>The app has no sign-up and no analytics.</span></article>
       <article><b>Watchlist stays on-device</b><span>Companies you follow, preferences and cached filings live in app-private storage.</span></article>
-      <article><b>Only SEC.gov is contacted</b><span>The app fetches public filings directly from official SEC endpoints.</span></article>
+      <article><b>Ads via Google</b><span>Google ad services process device and advertising data according to your consent choices.</span></article>
     </div>
 
-    <div class="notice"><strong>Plain-language summary:</strong> Smart Money collects nothing on its own servers — it runs none. Your email is only used if you type it in, it stays in app-private storage, and it is included in the User-Agent of requests to SEC.gov as their fair-access policy requires. Your watchlist and cached filings never leave the device except through actions you choose, such as sharing.</div>
+    <div class="notice"><strong>Plain-language summary:</strong> Smart Money collects nothing on its own servers — it runs none. Your email is only used if you type it in, it stays in app-private storage, and it is included in the User-Agent of requests to SEC.gov as their fair-access policy requires. Ads are served by Google: depending on your consent choices, Google and its partners may process device and advertising information. Your watchlist and cached filings never leave the device except through actions you choose, such as sharing.</div>
 
     <div class="policy">
       <nav class="toc" aria-label="Privacy policy contents">
@@ -113,6 +113,7 @@
         <a href="#scope">Scope</a>
         <a href="#data">Data practices</a>
         <a href="#email">Contact email</a>
+        <a href="#ads">Advertising &amp; consent</a>
         <a href="#network">Network activity</a>
         <a href="#permissions">Permissions</a>
         <a href="#notifications">Notifications</a>
@@ -161,8 +162,28 @@
           <p>Demo mode requires no email at all and makes no network requests.</p>
         </section>
 
+        <section id="ads">
+          <h2>4. Advertising and consent</h2>
+          <p>Smart Money includes the Google Mobile Ads SDK and Google User Messaging Platform (UMP). Depending on your region, device settings and the consent choices you make in the app, Google and its advertising partners may access or process:</p>
+          <ul>
+            <li>advertising identifiers and consent signals;</li>
+            <li>IP address and approximate location inferred from network information;</li>
+            <li>device, operating-system, app and language information;</li>
+            <li>diagnostics, ad impressions, ad interactions and fraud-prevention signals.</li>
+          </ul>
+          <p>This information is used to provide and measure advertising, cap ad frequency, prevent abuse and maintain service security. It is never used to identify you personally, and it is never combined with your watchlist, the filings you view, or your SEC contact email — those stay in the sections of the app described above.</p>
+          <p>Where required, a consent form is shown at first launch and can be revisited any time via the privacy options entry in Settings. Google’s handling of ad data is described in <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a> and <a href="https://business.safety.google/privacy/ads-and-data/">Ads and Data information</a>.</p>
+          <p>Ad placements in Smart Money:</p>
+          <ul>
+            <li><strong>Native ads</strong> appear inside content lists (feed, watchlist, whale portfolios) and at the end of a filing’s detail page, clearly labelled;</li>
+            <li><strong>App open ads</strong> may appear when the app returns to the foreground, frequency capped;</li>
+            <li><strong>Interstitials</strong> may appear when leaving the app, and occasionally when sharing a filing.</li>
+          </ul>
+          <p>A failed or unavailable ad never blocks any feature: content loads and actions complete exactly the same without it.</p>
+        </section>
+
         <section id="network">
-          <h2>4. Network activity</h2>
+          <h2>5. Network activity</h2>
           <p>The app contacts only the following public hosts over HTTPS:</p>
           <ul>
             <li><strong>data.sec.gov</strong> — submissions and company-facts (XBRL) APIs;</li>
@@ -173,7 +194,7 @@
         </section>
 
         <section id="permissions">
-          <h2>5. Android permissions</h2>
+          <h2>6. Android permissions</h2>
           <ul>
             <li><strong>Internet and network state:</strong> used to fetch public SEC data and detect connectivity.</li>
             <li><strong>Notifications:</strong> used only for alerts about filings from companies or managers you follow. Granted only after you tap a prompt in the app and can be revoked anytime in system settings.</li>
@@ -182,44 +203,44 @@
         </section>
 
         <section id="notifications">
-          <h2>6. Notifications and monitoring</h2>
+          <h2>7. Notifications and monitoring</h2>
           <p>When you follow an entity and enable monitoring, the app checks SEC endpoints from the background at a modest interval and posts a notification when a new filing matches. Checks happen only while the feature is enabled and stop when you disable it or clear your follows. Notification content contains filing titles and company names — never your email address.</p>
         </section>
 
         <section id="retention">
-          <h2>7. Retention and deletion</h2>
+          <h2>8. Retention and deletion</h2>
           <p>Watchlist, preferences, the contact email and cached filing data remain on the device until you delete them by clearing data in Android settings, using “Clear cache” in Settings, or uninstalling. Android backup and cloud data extraction are disabled for this app, so this data is not copied to Google’s servers through backup.</p>
           <p>Content shared through the Android share sheet (snapshots, text) is handled by the destination app or service; we cannot delete copies there. SEC hosts apply their own retention to server logs under their policies.</p>
         </section>
 
         <section id="security">
-          <h2>8. Security</h2>
+          <h2>9. Security</h2>
           <p>Smart Money uses Android app sandboxing and app-private storage, HTTPS-only traffic (cleartext disabled), disabled backup and data extraction, and temporary content-URI permissions for shared snapshots. Because there is no backend, there is no central database to breach.</p>
         </section>
 
         <section id="children">
-          <h2>9. Children</h2>
+          <h2>10. Children</h2>
           <p>Smart Money is a financial-information tool directed at adults and is not directed to children under 13. We do not knowingly collect personal information from children.</p>
         </section>
 
         <section id="website">
-          <h2>10. This website</h2>
+          <h2>11. This website</h2>
           <p>This website is a static informational site. Its files do not set cookies, run analytics, display advertising or contain tracking scripts. The hosting provider may process ordinary server-log information such as IP address, request time, requested page and browser user agent for delivery, reliability and security. The provider’s retention and handling are governed by the hosting arrangement selected by the developer.</p>
         </section>
 
         <section id="disclaimer">
-          <h2>11. Independent-service disclaimer</h2>
+          <h2>12. Independent-service disclaimer</h2>
           <p>Smart Money is not affiliated with, approved by or acting for the U.S. Securities and Exchange Commission or any listed company. Filing summaries and plain-language descriptions are informational and may be incomplete. They do not constitute investment, legal or tax advice, and do not guarantee accuracy or completeness of the underlying filings. The official document on sec.gov is authoritative; the issuer and the SEC make the final word on its content.</p>
         </section>
 
         <section id="changes">
-          <h2>12. Policy changes</h2>
+          <h2>13. Policy changes</h2>
           <p>This policy may be updated when the app’s features, data practices, legal requirements or distribution details change. Material updates will be reflected by changing the effective date on this page. Continued use after an update is subject to the revised policy.</p>
         </section>
 
         <section id="contact">
           <div class="contact">
-            <h2>13. Privacy contact</h2>
+            <h2>14. Privacy contact</h2>
             <p>For privacy questions, data-handling concerns or deletion guidance, contact us at <strong><a href="mailto:ipoalertrvc@gmaill.com" style="color:inherit">ipoalertrvc@gmaill.com</a></strong>. Include “Smart Money privacy” in the subject line.</p>
             <p><strong>Developer / app identity:</strong> Smart Money: Insider Tracker<br><strong>Android package:</strong> com.vmworks.smartmoney</p>
           </div>
