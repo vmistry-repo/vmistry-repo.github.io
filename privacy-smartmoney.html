@@ -8,6 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="description" content="Privacy Policy for the Smart Money: Insider Tracker Android application.">
   <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://vmistry-repo.github.io/privacy-smartmoney.html">
   <title>Privacy Policy — Smart Money: Insider Tracker</title>
   <style>
     :root {
@@ -89,23 +90,23 @@
   <header>
     <div class="shell nav">
       <a class="brand" href="smartmoney.html" aria-label="Smart Money home"><span class="brand-mark" aria-hidden="true"></span><span>Smart Money</span></a>
-      <a class="back" href="index.html">← All apps</a>
+      <a class="back" href="https://vmistry-repo.github.io/">← All apps</a>
     </div>
   </header>
 
   <main class="shell" id="main">
     <div class="eyebrow">Legal &amp; privacy</div>
     <h1>Privacy Policy</h1>
-    <p class="intro">This policy explains how the Smart Money: Insider Tracker Android application and this static website handle information. Smart Money is an independent reader for public SEC EDGAR filings.</p>
-    <div class="meta"><span>Effective 20 October 2026</span><span>App package: com.vmworks.smartmoney</span><span>Version 1.0</span></div>
+    <p class="intro">This policy explains how the Smart Money: Insider Tracker Android application and its product and privacy pages handle information. Smart Money is an independent reader for public SEC EDGAR filings, developed by VMWorks Studios.</p>
+    <div class="meta"><span>Effective 6 November 2026</span><span>App package: com.vmworks.smartmoney</span><span>Policy version 1.1</span></div>
 
     <div class="summary" aria-label="Privacy summary">
-      <article><b>No account</b><span>The app has no sign-up and no analytics.</span></article>
-      <article><b>Watchlist stays on-device</b><span>Companies you follow, preferences and cached filings live in app-private storage.</span></article>
-      <article><b>Ads via Google</b><span>Google ad services process device and advertising data according to your consent choices.</span></article>
+      <article><b>Email for SEC access</b><span>The email selected during setup is included in requests to SEC.gov.</span></article>
+      <article><b>Local watchlist</b><span>Follows, preferences and downloaded reports are stored in app-private storage.</span></article>
+      <article><b>Direct public sources</b><span>The filing-data client requests public information from official SEC hosts.</span></article>
     </div>
 
-    <div class="notice"><strong>Plain-language summary:</strong> Smart Money collects nothing on its own servers — it runs none. Your email is only used if you type it in, it stays in app-private storage, and it is included in the User-Agent of requests to SEC.gov as their fair-access policy requires. Ads are served by Google: depending on your consent choices, Google and its partners may process device and advertising information. Your watchlist and cached filings never leave the device except through actions you choose, such as sharing.</div>
+    <div class="notice"><strong>Plain-language summary:</strong> Smart Money does not operate a developer backend for your app data. Setup uses Google account selection/sign-in, with manual email entry if it fails. The selected email is saved locally and sent to SEC.gov in the User-Agent contact header with filing-data requests. SEC also receives your IP address and the public resources requested; those requests can reveal companies of interest. Sharing content or emailing support sends information to the recipients you choose.</div>
 
     <div class="policy">
       <nav class="toc" aria-label="Privacy policy contents">
@@ -113,7 +114,7 @@
         <a href="#scope">Scope</a>
         <a href="#data">Data practices</a>
         <a href="#email">Contact email</a>
-        <a href="#ads">Advertising &amp; consent</a>
+        <a href="#sign-in">Google sign-in</a>
         <a href="#network">Network activity</a>
         <a href="#permissions">Permissions</a>
         <a href="#notifications">Notifications</a>
@@ -129,8 +130,8 @@
       <div class="content">
         <section id="scope">
           <h2>1. Scope and developer identity</h2>
-          <p>This Privacy Policy governs the <strong>Smart Money: Insider Tracker</strong> Android app and this product website. References to “we,” “our,” or “Smart Money” mean the developer identified as VMWorks in the Google Play listing. This policy does not govern the U.S. Securities and Exchange Commission, your browser, device manufacturer or app store.</p>
-          <p>Smart Money does not offer user accounts and does not operate any server that receives user information. There is no backend: the app is a client that talks to public SEC endpoints.</p>
+          <p>This Privacy Policy governs the <strong>Smart Money: Insider Tracker</strong> Android app and its product and privacy pages. References to “we” or “our” mean VMWorks Studios (VMWorks). This policy does not govern the U.S. Securities and Exchange Commission, Google account services, your browser, device manufacturer or app store.</p>
+          <p>The app does not create a separate developer-hosted account or send your app database to a developer-operated backend. It uses a selected email address to identify its SEC data requests. Information you voluntarily send to our support mailbox is handled as described in Section 14.</p>
         </section>
 
         <section id="data">
@@ -139,11 +140,12 @@
             <table>
               <thead><tr><th>Information</th><th>How it is used</th><th>Leaves the device?</th></tr></thead>
               <tbody>
-                <tr><td>Watchlist, follows, preferences</td><td>Remember followed companies and managers, theme, demo mode and app state.</td><td>No. Stored in app-private storage (DataStore / Room database).</td></tr>
-                <tr><td>Cached filing data</td><td>Display filings, transactions, holdings and search results offline after download.</td><td>No. Stored in app-private storage; cleared via “Clear cache” in Settings.</td></tr>
-                <tr><td>SEC contact email (user-supplied)</td><td>Sent in the User-Agent header of requests to SEC.gov, as the SEC’s fair-access policy requires.</td><td>Yes — to sec.gov and data.sec.gov only, per Section 3.</td></tr>
-                <tr><td>Network connection data</td><td>Retrieve public filing data from official SEC endpoints.</td><td>Yes. SEC servers receive normal request information such as IP address.</td></tr>
-                <tr><td>Screen snapshot (transient)</td><td>When you tap Share, the visible screen is captured to create a shareable image.</td><td>Only to destinations you choose in the Android share sheet.</td></tr>
+                <tr><td>Watchlist, follows, alert rules and preferences</td><td>Remember companies and managers, appearance, alert choices and app state.</td><td>The stored list is not uploaded. Requests for particular companies can reveal your interests to the SEC.</td></tr>
+                <tr><td>Downloaded public filing data</td><td>Display reports, transactions, holdings, financial facts and cached results, including offline where available.</td><td>Downloaded from the SEC and stored locally; not uploaded to a developer backend.</td></tr>
+                <tr><td>Selected email address</td><td>Identify the app’s requests under the SEC’s fair-access requirements.</td><td>Yes — included in the User-Agent contact header to www.sec.gov and data.sec.gov.</td></tr>
+                <tr><td>Network connection data</td><td>Retrieve public information and enforce access limits.</td><td>SEC servers receive your IP address, request time, user agent and requested public resource.</td></tr>
+                <tr><td>Local activity and delivery state</td><td>Remember help screens, app openings, inactivity, update/rating prompts, sync status and notification delivery.</td><td>Stored on-device; not sent as app-usage analytics to a developer server.</td></tr>
+                <tr><td>Shared screen image and text</td><td>Create a PNG of the visible screen and accompanying text when you choose Share.</td><td>Sent to your chosen destination through Android’s share sheet. Review visible information before sharing.</td></tr>
               </tbody>
             </table>
           </div>
@@ -151,99 +153,88 @@
 
         <section id="email">
           <h2>3. The SEC contact email</h2>
-          <p>SEC’s public fair-access rules ask automated clients to identify themselves with a contact email. Smart Money asks for yours during setup and stores it in app-private storage. It is attached as a User-Agent header on requests to sec.gov and data.sec.gov.</p>
+          <p>SEC’s public fair-access rules ask automated clients to identify themselves with contact information. Smart Money uses the email obtained during Google account selection/sign-in, or entered through the fallback when sign-in fails. It stores that email locally and includes it in the User-Agent header on filing-data requests to www.sec.gov and data.sec.gov, including background checks.</p>
           <ul>
-            <li>It is <strong>not</strong> used for marketing, profiling or any other purpose.</li>
-            <li>It is <strong>not</strong> sent anywhere except SEC endpoints.</li>
-            <li>It is never included in the filings you share.</li>
-            <li>Changing or removing it in Settings updates it immediately.</li>
-            <li>You may use any email address you control; a dedicated or disposable-style address works if you prefer not to use your primary one.</li>
+            <li>We do not use this stored email for marketing or send it to a developer-operated app backend.</li>
+            <li>SEC receives it with requests and handles server records under its own privacy practices.</li>
+            <li>The current Settings screen displays the sign-in email as <strong>read-only</strong>; it cannot be changed there.</li>
+            <li>To remove it locally or restart setup with another address, clear the app’s storage in Android settings. This also deletes other local app data.</li>
           </ul>
-          <p>Demo mode requires no email at all and makes no network requests.</p>
+          <p>Removing local data does not delete records already received by the SEC or your Google account.</p>
         </section>
 
-        <section id="ads">
-          <h2>4. Advertising and consent</h2>
-          <p>Smart Money includes the Google Mobile Ads SDK and Google User Messaging Platform (UMP). Depending on your region, device settings and the consent choices you make in the app, Google and its advertising partners may access or process:</p>
-          <ul>
-            <li>advertising identifiers and consent signals;</li>
-            <li>IP address and approximate location inferred from network information;</li>
-            <li>device, operating-system, app and language information;</li>
-            <li>diagnostics, ad impressions, ad interactions and fraud-prevention signals.</li>
-          </ul>
-          <p>This information is used to provide and measure advertising, cap ad frequency, prevent abuse and maintain service security. It is never used to identify you personally, and it is never combined with your watchlist, the filings you view, or your SEC contact email — those stay in the sections of the app described above.</p>
-          <p>Where required, a consent form is shown at first launch and can be revisited any time via the privacy options entry in Settings. Google’s handling of ad data is described in <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a> and <a href="https://business.safety.google/privacy/ads-and-data/">Ads and Data information</a>.</p>
-          <p>Ad placements in Smart Money:</p>
-          <ul>
-            <li><strong>Native ads</strong> appear inside content lists (feed, watchlist, whale portfolios) and at the end of a filing’s detail page, clearly labelled;</li>
-            <li><strong>App open ads</strong> may appear when the app returns to the foreground after a period in the background, frequency capped;</li>
-            <li><strong>An interstitial</strong> may appear occasionally when you share a filing (at most every other share).</li>
-          </ul>
-          <p>A failed or unavailable ad never blocks any feature: content loads and actions complete exactly the same without it.</p>
+        <section id="sign-in">
+          <h2>4. Google account selection and sign-in</h2>
+          <p>The app uses Google account services to let you select an email address during setup. If that process fails or is cancelled, it offers manual email entry. The current app uses the selected email for SEC access rather than creating a separate account with us.</p>
+          <p>We do not receive or store your Google password. Google’s account services may process account, device and connection information as part of their operation under <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a>. Clearing Smart Money’s local data does not delete your Google account or information held by Google.</p>
         </section>
 
         <section id="network">
           <h2>5. Network activity</h2>
-          <p>The app contacts only the following public hosts over HTTPS:</p>
+          <p>The app’s filing-data client requests public information directly from these hosts over HTTPS:</p>
           <ul>
             <li><strong>data.sec.gov</strong> — submissions and company-facts (XBRL) APIs;</li>
             <li><strong>www.sec.gov</strong> — filing archive pages, the latest-filings atom feed, the ticker mapping file and EDGAR browse search.</li>
           </ul>
-          <p>These servers receive your IP address, request time, the app’s user agent (which includes the contact email described in Section 3) and the public resource requested. Cleartext traffic is disabled. The app never uploads your watchlist, cached data or any derived content.</p>
-          <p>Separately, the advertising services described in Section 4 communicate with Google’s ad servers over secure connections as part of ad selection, delivery and measurement.</p>
-          <p>Opening a filing on sec.gov launches your browser or in-app browser tab, where the destination’s privacy practices apply.</p>
+          <p>SEC receives your IP address, request time, user agent including the email described in Section 3, and the requested resource. Although the watchlist is not uploaded as a list, company identifiers in requests can reveal what you follow or view. The client disables redirects and cleartext traffic. SEC’s own privacy and access policies govern its handling of these requests.</p>
+          <p>Browsing recent filings, discovering managers, opening documents, comparing financials and background monitoring can all generate SEC requests. The app caches public results to reduce repeated downloads. Synthetic demo data, where available, is separate from live data and does not trigger the SEC client.</p>
+          <p>Opening an official filing or another external link launches a browser or browser tab, where that browser and destination apply their own practices. Google account services operate separately as described in Section 4.</p>
         </section>
 
         <section id="permissions">
           <h2>6. Android permissions</h2>
           <ul>
             <li><strong>Internet and network state:</strong> used to fetch public SEC data and detect connectivity.</li>
-            <li><strong>Notifications:</strong> used only for alerts about filings from companies or managers you follow. Granted only after you tap a prompt in the app and can be revoked anytime in system settings.</li>
+            <li><strong>Notifications:</strong> used for filing alerts, informational notes and activity reminders. Android 13 and later require runtime permission. You can deny or revoke permission, or disable notification channels in Android settings.</li>
           </ul>
-          <p>No other permissions are requested. The app does not access location, contacts, camera, microphone or storage.</p>
+          <p>The app’s filing and sharing features do not require access to your contacts, precise location, camera, microphone or general photo library. A shared image is generated from the app window in private cache storage and made available to the chosen recipient using temporary content access.</p>
         </section>
 
         <section id="notifications">
           <h2>7. Notifications and monitoring</h2>
-          <p>When you follow an entity and enable monitoring, the app checks SEC endpoints from the background at a modest interval and posts a notification when a new filing matches. Checks happen only while the feature is enabled and stop when you disable it or clear your follows. Notification content contains filing titles and company names — never your email address.</p>
+          <p>Setup enables background monitoring for live data. Periodic work checks SEC sources and may produce notifications for configured filing rules. The app can also issue educational notes and return-to-app reminders using locally stored activity dates. No developer push-notification backend receives your watchlist or delivery history.</p>
+          <p>Notification content may appear on the lock screen according to your Android settings. Disable permission or individual channels in Android settings to control visibility. Blocking notifications does not by itself stop data requests while the app is installed; Android’s background-data and battery controls can restrict background activity. Checks and delivery are subject to scheduling, connectivity and SEC access limits.</p>
         </section>
 
         <section id="retention">
           <h2>8. Retention and deletion</h2>
-          <p>Watchlist, preferences, the contact email and cached filing data remain on the device until you delete them by clearing data in Android settings, using “Clear cache” in Settings, or uninstalling. Android backup and cloud data extraction are disabled for this app, so this data is not copied to Google’s servers through backup.</p>
-          <p>Content shared through the Android share sheet (snapshots, text) is handled by the destination app or service; we cannot delete copies there. SEC hosts apply their own retention to server logs under their policies.</p>
+          <p>Local information is kept as needed for app features until it is pruned, cleared or the app is uninstalled. <strong>Settings → Clear downloaded data is not a full reset:</strong> it clears the HTTP cache and prunes filings older than 90 days for unfollowed entities, along with orphaned transaction and holding records in the active database. It preserves follows, preferences, the email address, alert rules and financial facts, and does not erase the other mode’s database.</p>
+          <p>To delete all local app data, use <strong>Android Settings → Apps → Smart Money: Insider Tracker → Storage → Clear storage</strong>, or uninstall the app. Device wording may vary. To restart setup with another email, clear storage and reopen the app. The app declares Android cloud-backup and device-transfer exclusions for its application data.</p>
+          <p>Shared images can remain in private cache until removed by cache cleanup, Android or full data deletion. Copies sent through the share sheet are controlled by their recipients. Local deletion cannot erase records held by the SEC, Google, your browser or a sharing destination; those providers set their own retention rules.</p>
         </section>
 
         <section id="security">
           <h2>9. Security</h2>
-          <p>Smart Money uses Android app sandboxing and app-private storage, HTTPS-only traffic (cleartext disabled), disabled backup and data extraction, and temporary content-URI permissions for shared snapshots. Because there is no backend, there is no central database to breach.</p>
+          <p>Smart Money uses Android’s application sandbox, app-private storage, HTTPS for SEC requests, declared backup exclusions and temporary content access for shared images. The local database and preferences are not encrypted with a separate application-managed key. Device security, screen-lock choices and operating-system protections remain important. No storage or transmission method can be guaranteed completely secure.</p>
         </section>
 
         <section id="children">
           <h2>10. Children</h2>
-          <p>Smart Money is a financial-information tool directed at adults and is not directed to children under 13. We do not knowingly collect personal information from children.</p>
+          <p>Smart Money is a financial-information tool intended for adults, not children under 13. We do not knowingly request children’s personal information. If you believe a child has provided personal information to our support mailbox, contact us so we can review and delete it where appropriate.</p>
         </section>
 
         <section id="website">
           <h2>11. This website</h2>
-          <p>This website is a static informational site. Its files do not set cookies, run analytics, display advertising or contain tracking scripts. The hosting provider may process ordinary server-log information such as IP address, request time, requested page and browser user agent for delivery, reliability and security. The provider’s retention and handling are governed by the hosting arrangement selected by the developer.</p>
+          <p>The Smart Money product and privacy pages are static pages hosted on GitHub Pages. Their page code does not set cookies, load remote fonts or include analytics or tracking scripts. GitHub may process ordinary hosting information, including IP address, requested page, request time and browser user agent, to deliver and secure the site under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>
+          <p>Following a Google Play, Google privacy, SEC or other external link opens a separate service with its own practices. Email links open your chosen email application.</p>
         </section>
 
         <section id="disclaimer">
           <h2>12. Independent-service disclaimer</h2>
-          <p>Smart Money is not affiliated with, approved by or acting for the U.S. Securities and Exchange Commission or any listed company. Filing summaries and plain-language descriptions are informational and may be incomplete. They do not constitute investment, legal or tax advice, and do not guarantee accuracy or completeness of the underlying filings. The official document on sec.gov is authoritative; the issuer and the SEC make the final word on its content.</p>
+          <p>Smart Money is not affiliated with, approved by or acting for the U.S. Securities and Exchange Commission or any listed company. Summaries may be incomplete, delayed or affected by later amendments. Reported institutional holdings are historical quarter-end disclosures, not live positions. The app provides information, not investment, legal or tax advice, and does not execute trades. Verify information against the original filing.</p>
         </section>
 
         <section id="changes">
           <h2>13. Policy changes</h2>
-          <p>This policy may be updated when the app’s features, data practices, legal requirements or distribution details change. Material updates will be reflected by changing the effective date on this page. Continued use after an update is subject to the revised policy.</p>
+          <p>We will update this policy when features, data practices or legal requirements change and revise the effective date above. Where required, we will provide additional notice or seek consent before a new use of personal information.</p>
         </section>
 
         <section id="contact">
           <div class="contact">
             <h2>14. Privacy contact</h2>
-            <p>For privacy questions, data-handling concerns or deletion guidance, contact us at <strong><a href="mailto:ipoalertrvc@gmaill.com" style="color:inherit">ipoalertrvc@gmaill.com</a></strong>. Include “Smart Money privacy” in the subject line.</p>
-            <p><strong>Developer / app identity:</strong> Smart Money: Insider Tracker<br><strong>Android package:</strong> com.vmworks.smartmoney</p>
+            <p>For privacy questions, deletion guidance or applicable access, correction, deletion or objection requests, email <strong><a href="mailto:ipoalertrvc@gmail.com" style="color:inherit">ipoalertrvc@gmail.com</a></strong>. Include “Smart Money privacy” in the subject. We cannot access or erase your on-device database remotely.</p>
+            <p>If you contact support, we receive your email address, message and any attachments you choose to send. We use them to respond, troubleshoot or meet legal obligations, retain them only as reasonably needed for those purposes, and do not sell them. Do not send passwords, financial-account credentials or other unnecessary sensitive information.</p>
+            <p><strong>Developer:</strong> VMWorks Studios (VMWorks)<br><strong>App:</strong> Smart Money: Insider Tracker<br><strong>Android package:</strong> com.vmworks.smartmoney</p>
           </div>
         </section>
       </div>
@@ -251,7 +242,7 @@
   </main>
 
   <footer>
-    <div class="shell footer-inner"><span>© 2026 VMWorks Studios</span><span><a href="smartmoney.html">Product website</a> · <a href="index.html">More apps</a> · Privacy Policy</span></div>
+    <div class="shell footer-inner"><span>© 2026 VMWorks Studios</span><span><a href="smartmoney.html">Product website</a> · <a href="https://vmistry-repo.github.io/">More apps</a> · Privacy Policy</span></div>
   </footer>
 </body>
 </html>

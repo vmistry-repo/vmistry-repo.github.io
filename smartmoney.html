@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Smart Money: Insider Tracker — follow SEC EDGAR insider trades, 13F whale portfolios and 8-K events, in plain language.">
+    <meta name="description" content="Track public SEC filings, insider trades, institutional portfolios and company financials with Smart Money: Insider Tracker by VMWorks Studios.">
+    <meta name="theme-color" content="#07111A">
+    <link rel="canonical" href="https://vmistry-repo.github.io/smartmoney.html">
     <title>Smart Money: Insider Tracker | SEC filings in plain language</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #52DAB4;
@@ -18,7 +19,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -34,7 +35,7 @@
         .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         header { padding: 6rem 0; text-align: center; }
-        h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -2px; }
+        h1 { font-size: clamp(2.3rem, 6vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -2px; line-height: 1.15; }
         .hero-text { font-size: 1.25rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 3rem; }
         .btn {
             background: linear-gradient(135deg, var(--primary) 0%, #2FA98A 100%);
@@ -45,10 +46,10 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(82, 218, 180, 0.35); }
         .trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 2.2rem; }
         .trust-row span { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-muted); font-size: 0.8rem; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 4rem 0; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; padding: 4rem 0; }
         .feature-card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); padding: 2.5rem; border-radius: 24px; transition: border-color 0.3s ease; }
         .feature-card:hover { border-color: var(--primary); }
-        .feature-card h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+        .feature-card h2 { margin-bottom: 1rem; font-size: 1.5rem; }
         .feature-card p { color: var(--text-muted); }
         .feature-card .icon { font-size: 2rem; display: block; margin-bottom: 1rem; }
         .disclaimer { max-width: 900px; margin: 0 auto; padding: 2rem; border: 1px solid var(--border); border-radius: 20px; color: var(--text-muted); font-size: 0.9rem; text-align: center; }
@@ -56,7 +57,9 @@
         footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
         footer p { color: var(--text-muted); font-size: 0.9rem; }
         footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } header { padding: 4rem 0; } }
+        :focus-visible { outline: 3px solid var(--secondary); outline-offset: 5px; }
+        @media (max-width: 768px) { header { padding: 4rem 0; } nav { gap: 1rem; flex-wrap: wrap; } .feature-card { padding: 1.5rem; } }
+        @media (prefers-reduced-motion: reduce) { .btn, .feature-card { transition: none; } .btn:hover { transform: none; } }
     </style>
 </head>
 <body>
@@ -64,64 +67,65 @@
 
     <nav>
         <div class="logo">SMART MONEY</div>
-        <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← All apps</a>
+        <a href="https://vmistry-repo.github.io/" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← All apps</a>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <header>
-            <h1>Follow the <br><span style="color: var(--primary)">smart money</span></h1>
-            <p class="hero-text">Straight from SEC EDGAR to your pocket. Insider Form 4 trades, 13F whale portfolios and 8-K company events — translated into plain language a retail investor can actually use.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.vmworks.smartmoney" class="btn">Download on Play Store</a>
+            <h1>Smart Money:<br><span style="color: var(--primary)">Insider Tracker</span></h1>
+            <p class="hero-text">Make public market disclosures easier to understand. Explore SEC EDGAR filings, reported insider transactions, institutional portfolios and company financials — with links to the original sources.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.vmworks.smartmoney" class="btn">View on Google Play</a>
             <div class="trust-row">
-                <span>No account</span><span>No analytics</span><span>Watchlist stays on-device</span>
+                <span>Public SEC sources</span><span>On-device watchlist</span><span>Android 8.0+</span>
             </div>
         </header>
 
-        <section class="features">
+        <section class="features" aria-label="App features">
             <div class="feature-card">
                 <span class="icon">📈</span>
-                <h3>Insider trade feed</h3>
-                <p>Form 4 filings decoded the moment they land: who bought or sold, how many shares, at what price, and what they still own — without the XML headache.</p>
+                <h2>Reported insider trades</h2>
+                <p>Read Form 4 and amended filings with transaction summaries, reported share counts, prices, ownership details and footnotes where available.</p>
             </div>
             <div class="feature-card">
                 <span class="icon">🐋</span>
-                <h3>Whale watching</h3>
-                <p>Quarterly 13F portfolios of institutional managers. Compare holdings across quarters and spot what the big money is building — or quietly exiting.</p>
+                <h2>Institutional portfolios</h2>
+                <p>Explore available 13F manager portfolios and compare reported holdings across quarters. These are historical quarter-end disclosures, not live trading positions.</p>
             </div>
             <div class="feature-card">
                 <span class="icon">🔔</span>
-                <h3>Watchlist alerts</h3>
-                <p>Follow any company or manager and get a notification when they file. Background monitoring keeps the feed fresh even while the app is closed.</p>
+                <h2>Following &amp; alerts</h2>
+                <p>Find companies by name or ticker, follow companies and managers, and configure filing alerts. Background checks depend on connectivity, Android scheduling, notification permission and SEC availability.</p>
             </div>
             <div class="feature-card">
                 <span class="icon">💬</span>
-                <h3>Plain-language summaries</h3>
-                <p>Every form type explained — 8-K events, proxy votes, amendments — so you know what happened and why it might matter, in one screen.</p>
+                <h2>Filings in context</h2>
+                <p>Browse recent filings across form types, filter by category, and read specialized Form 4, 8-K and 13F summaries where supported. Open document lists, available previews and official SEC sources.</p>
             </div>
             <div class="feature-card">
-                <span class="icon">🧪</span>
-                <h3>Try demo mode first</h3>
-                <p>A full synthetic dataset ships with the app. Explore every screen with sample data before connecting your live SEC contact email.</p>
+                <span class="icon">📊</span>
+                <h2>Company financials</h2>
+                <p>Review available reported financial figures and charts. Compare supported company metrics such as revenue, profit, assets and payables for selected periods.</p>
             </div>
             <div class="feature-card">
                 <span class="icon">🔒</span>
-                <h3>Private by design</h3>
-                <p>No sign-up needed. Your watchlist and preferences live in app-private storage, and filings come straight from SEC.gov.</p>
+                <h2>Clear data handling</h2>
+                <p>Your follows, preferences and downloaded reports stay in app-private storage. Setup uses Google sign-in, with an email fallback if it fails. Your selected email is sent to SEC.gov in the contact header for data requests. <a href="privacy-smartmoney.html" style="color: var(--primary)">Read the privacy policy</a>.</p>
             </div>
         </section>
 
         <div class="disclaimer">
-            <p><strong>Data source &amp; disclaimer:</strong> All filing data comes directly from the public SEC EDGAR system. Smart Money is an independent reader and is not affiliated with or endorsed by the U.S. Securities and Exchange Commission. Nothing in the app is investment advice.</p>
+            <p><strong>Data source &amp; disclaimer:</strong> Filing data comes from the public <a href="https://www.sec.gov/edgar" style="color: var(--primary)">SEC EDGAR system</a>. Smart Money is independent and is not affiliated with or endorsed by the U.S. Securities and Exchange Commission. Information may be delayed, incomplete or amended; alerts are not guaranteed or instantaneous. Verify the original filing. The app does not provide investment advice or execute trades.</p>
         </div>
 
         <footer>
             <p>&copy; 2026 VMWorks Studios. All rights reserved.</p>
             <p style="margin-top: 1rem;">
                 <a href="privacy-smartmoney.html">Privacy Policy</a>
-                <a href="index.html">More apps</a>
+                <a href="https://vmistry-repo.github.io/">More apps</a>
+                <a href="mailto:ipoalertrvc@gmail.com">Support</a>
                 <a href="https://www.sec.gov/edgar" rel="noopener">SEC EDGAR</a>
             </p>
         </footer>
-    </div>
+    </main>
 </body>
 </html>
